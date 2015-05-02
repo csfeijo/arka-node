@@ -1,90 +1,140 @@
-var scene = new Scene();
+(function () {
 
-Quick.init(function () { return scene; });
+	"use strict";
 
-var background = new GameObject();
+	// imports
+	var CommandEnum = com.dgsprb.quick.CommandEnum;
+	var Quick = com.dgsprb.quick.Quick;
+  var GameObject = com.dgsprb.quick.GameObject;
+	var Scene = com.dgsprb.quick.Scene;
 
-scene.add(background);
-background.setWidth(Quick.getCanvasWidth());
-background.setHeight(Quick.getCanvasHeight());
-background.setColor('#0096d6');
-
-
-var player1 = new GameObject();
-scene.add(player1);
-
-var player_main_sprite = document.getElementById('p1'),
-    player_sprites = {
-      to_down : player_main_sprite,
-      to_right : ImageFactory.rotate(player_main_sprite, 270),
-      to_left : ImageFactory.mirror(ImageFactory.rotate(player_main_sprite, 270)),
-      to_up : ImageFactory.rotate(player_main_sprite, 540)
-    };
-
-// Start!!!
-player1.setImage(player_sprites.to_down);
-player1.setWidth(29);
-player1.setHeight(40);
-player1.setColor('transparent');
-
-player1.controller = Quick.getController();
-
-player1.update = function(){
-  
-  if (player1.controller.keyPush(CommandEnum.RIGHT)) {
-		player1.moveX(4);
-		player1.setImage(player_sprites.to_right);
-		player1.setWidth(40);
-    player1.setHeight(29);
+	function main() {
+		Quick.setName('Arkanoid');
+		Quick.setAutoScale(false);
+		Quick.init(function () { return new GameScene() });
 	}
-	
-	if (player1.controller.keyPush(CommandEnum.LEFT)) {
-	  player1.moveX(-4);
-		player1.setImage(player_sprites.to_left);
-		player1.setWidth(40);
-    player1.setHeight(29);
-	}
-	
-	if (player1.controller.keyPush(CommandEnum.DOWN)) {
-	  player1.moveY(4);
-		player1.setImage(player_sprites.to_down);
-		player1.setWidth(29);
-    player1.setHeight(40);
-	}
-	
-	if (player1.controller.keyPush(CommandEnum.UP)) {
-	  player1.moveY(-4);
-		player1.setImage(player_sprites.to_up);
-		player1.setWidth(29);
-    player1.setHeight(40);
-	}
-	
-};
 
-//var point1 = new Point(Quick.getCanvasRight(), Quick.getCanvasBottom());
-//player1.setSpeedToPoint(1, point1);
+	var Background = (function () {
+
+		function Background() {
+			GameObject.call(this);
+			this.setColor('blue');
+			this.setWidth(Quick.getCanvasWidth());
+			this.setHeight(Quick.getCanvasHeight());
+		}; Background.prototype = Object.create(GameObject.prototype);
+
+		return Background;
+
+	})();
+
+	var Menu = (function() {
+	  
+	  function Menu() {
+	    GameObject.call(this);
+	    this.setColor('#999999');
+	    this.setWidth(Quick.getCanvasWidth());
+	    this.setHeight(10);
+	  }; Menu.prototype = Object.create(GameObject.prototype);
+	  
+	  return Menu;
+	  
+	})();
+
+	var GameScene = (function () {
+
+		function GameScene() {
+			Scene.call(this);
+			this.add(new Background());
+			this.add(new Menu());
+
+			
+			var player = new Player();
+			this.add(player);
+			
+			var ball = new Ball();
+			this.add(ball);
+
+			
+		}; GameScene.prototype = Object.create(Scene.prototype);
+
+		// override
+		GameScene.prototype.getNext = function () {
+			return new GameScene();
+		};
+
+		return GameScene;
+
+	})();
+
+  var Ball = (function(){
+    
+    function Ball() {
+      GameObject.call(this);
+      this.setImage(document.getElementById('ball'));
+	    this.setColor('transparent');
+	    this.setSize(14, 12);
+	    this.setSolid();
+	    this.setY(30);
+	    this.setAccelerationY(0.5);
+	    this.addTag('ball');
+    }; Ball.prototype = Object.create(GameObject.prototype);
+    
+    Ball.prototype.onCollision = function (gameObject) {
+			if (gameObject.hasTag("player")) {
+				Quick.play("fallSound");
+				//this.expire();
+				console.log('collision!');
+				this.bounceY();
+			}
+		};
+    
+    
+    
+    
+    return Ball;
+  })();
 
 
-//player1.
 
+	// class Player extends GameObject
+	var Player = (function () {
 
-/*
-var player2 = new GameObject();
-scene.add(player2);
+		var SPEED = 3;
 
-image_2 = document.getElementById('p2');
-player2.setImage(image_2);
-player2.setWidth(64);
-player2.setHeight(64);
-player2.setColor('transparent');
-var point2 = new Point(300, Quick.getCanvasBottom());
-player2.setSpeedToPoint(1, point2);
-*/
+		function Player() {
+			GameObject.call(this);
 
+			this.controller = Quick.getController();
+			this.addTag("player");
+			//this.setAccelerationY(0.5);
+			this.setImage(document.getElementById('p1'));
+      this.setColor('transparent');
+			this.setY(130);
+			this.setEssential();
+			this.setSize(40, 10);
+			this.setSolid();
+		}; Player.prototype = Object.create(GameObject.prototype);
 
+		// override
+		Player.prototype.onCollision = function (gameObject) {
+			
+		};
 
+		// override
+		Player.prototype.update = function () {
 
+			if (this.controller.keyDown(CommandEnum.LEFT) && this.getLeft() > 0) {
+				this.moveX(-SPEED);
+			} else if (this.controller.keyDown(CommandEnum.RIGHT) && this.getRight() < Quick.getCanvasWidth()) {
+				this.moveX(SPEED);
+			}
+			
+		};
 
+		return Player;
 
-// var sprite = new Sprite();
-// sprite.setImage('mike.png');
+	})();
+
+	main();
+
+})();
