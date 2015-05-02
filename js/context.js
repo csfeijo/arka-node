@@ -7,6 +7,7 @@
 	var Quick = com.dgsprb.quick.Quick;
   var GameObject = com.dgsprb.quick.GameObject;
 	var Scene = com.dgsprb.quick.Scene;
+	var Point = com.dgsprb.quick.Point;
 
 	function main() {
 		Quick.setName('Arkanoid');
@@ -17,8 +18,11 @@
 	var Background = (function () {
 
 		function Background() {
+		  var arrBgs = ['red', 'green', 'blue', 'black'],
+		      rand   = Math.floor(Math.random() * (arrBgs.length -1));
+		  
 			GameObject.call(this);
-			this.setColor('blue');
+			this.setColor(arrBgs[rand]);
 			this.setWidth(Quick.getCanvasWidth());
 			this.setHeight(Quick.getCanvasHeight());
 		}; Background.prototype = Object.create(GameObject.prototype);
@@ -39,6 +43,7 @@
 	  return Menu;
 	  
 	})();
+	
 
 	var GameScene = (function () {
 
@@ -46,7 +51,6 @@
 			Scene.call(this);
 			this.add(new Background());
 			this.add(new Menu());
-
 			
 			var player = new Player();
 			this.add(player);
@@ -81,10 +85,21 @@
     
     Ball.prototype.onCollision = function (gameObject) {
 			if (gameObject.hasTag("player")) {
-				Quick.play("fallSound");
-				//this.expire();
+				Quick.play("bounceSound");
 				console.log('collision!');
 				this.bounceY();
+				
+			  //var point = new Point(0, 300);
+        //this.setSpeedToPoint(0.5, point);
+			}
+		};
+		
+		Ball.prototype.update = function () {
+			// checks for falling off the bottom of the screen
+			if (this.getTop() > Quick.getCanvasHeight()) {
+			  console.log('out');
+			  Quick.play("diedSound");
+			  this.expire();
 			}
 		};
     
