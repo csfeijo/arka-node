@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Smart Arkanoid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body class="controller">
+  
+  
+
+  <div class="pad">
+  	<button id="up">UP</button>
+
+  	<div class="clear"></div>
+
+  	<button id="right">RIGHT</button>
+  	<button id="left">LEFT</button>
+
+  	<div class="clear"></div>
+
+  	<button id="down">DOWN</button>
+  </div>	
+
+
+  <div id="debug"></div>
+
+	<script>
+	var io = io.connect();
+	var game_connected = function() {
+	  io.removeListener('game_connected', game_connected);
+	};
+  io.on('game_connected', game_connected);
+
+
+	io.on('connect', function() {
+	  
+    io.emit('game_connect');
+
+	});
+
+  $('#right').click(function(e){
+    e.preventDefault();
+    io.emit('to_right');
+  });
+
+  $('#left').click(function(e){
+    e.preventDefault();
+    io.emit('to_left');
+  });
+
+  $('#up').click(function(e){
+    e.preventDefault();
+    io.emit('to_up');
+  });
+  
+  $('#down').click(function(e){
+    e.preventDefault();
+    io.emit('to_down');
+  });
+	</script>  
+</body>
+
+</html>

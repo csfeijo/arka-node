@@ -1,0 +1,38 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Trebuchet MS';
+}
+
+.controller {
+
+}
+.controller .pad {
+	border: 1px solid #000;
+	width: 300px;
+	margin: 10px auto;
+	text-align: center;
+}
+
+.controller button {
+	padding: 10px;
+	background: #cccccc;
+	margin: 10px;
+	width: 100px;
+}
+.controller .#up,
+.controller #down {
+	margin: 10px auto;
+}
+.controller #left {
+	float: left;
+}
+.controller #right {
+	float: right;
+}
+
+
+
+.clear {
+	clear: both;
+}
