@@ -3,32 +3,57 @@ html, body{
 	padding: 0;
 	font-family: 'Trebuchet MS';
 }
-
 .controller {
 
 }
-.controller .pad {
-	border: 1px solid #000;
-	width: 300px;
-	margin: 10px auto;
+
+.controller header {
 	text-align: center;
 }
 
-.controller button {
-	padding: 10px;
-	background: #cccccc;
-	margin: 10px;
-	width: 100px;
+.controller .logo {
+  font-size: 50px;
+  margin: 0 auto;
 }
-.controller .#up,
+
+.controller .pad {
+	border: 1px solid #000;
+	border-radius: 50%;
+	padding: 10px;
+	width: 200px;
+	margin: 30px auto 0 auto;
+	text-align: center;
+	box-shadow: 6px 4px 8px #999
+}
+
+.controller button {
+	background: #000;
+	/*border: 1px solid #fff;*/
+	color: #ffffff;
+	outline: none;
+	padding: 10px;
+	margin: 5px;
+	width: 60px;
+	height: 60px;
+	font-size: 20px;
+}
+.controller #up {
+	border-radius: 6px 6px 0 0;
+}
 .controller #down {
-	margin: 10px auto;
+	border-radius: 0 0 6px 6px;
+}
+.controller #up,
+.controller #down {
+	margin: 5px auto;
 }
 .controller #left {
 	float: left;
+	border-radius: 6px 0 0 6px;
 }
 .controller #right {
 	float: right;
+	border-radius: 0 6px 6px 0;
 }
 
 

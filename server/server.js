@@ -6,6 +6,7 @@ var express = require('express'),
 
 server.listen(port);
 
+app.use("/fonts", express.static(__dirname + '/fonts'));
 app.use("/styles", express.static(__dirname + '/styles'));
 app.use("/scripts", express.static(__dirname + '/scripts'));
 

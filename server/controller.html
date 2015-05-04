@@ -4,26 +4,31 @@
 <head>
   <title>Smart Arkanoid</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
   <link rel="stylesheet" href="styles/main.css" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body class="controller">
-  
-  
+	<header>
+	  <span class="logo fa fa-gamepad"></span>
+	  <h1>Player 1</h1>
+  </header>
+	
 
   <div class="pad">
-  	<button id="up">UP</button>
+
+  	<button id="up"><span class="fa fa-arrow-circle-up"></span></button>
 
   	<div class="clear"></div>
 
-  	<button id="right">RIGHT</button>
-  	<button id="left">LEFT</button>
+  	<button id="right"><span class="fa fa-arrow-circle-right"></span></button>
+  	<button id="left"><span class="fa fa-arrow-circle-left"></span></button>
 
   	<div class="clear"></div>
 
-  	<button id="down">DOWN</button>
+  	<button id="down"><span class="fa fa-arrow-circle-down"></span></button>
   </div>	
 
 
