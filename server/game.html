@@ -3,14 +3,17 @@
 
 <head>
   <title>Smart Arkanoid - Game</title>
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/main.css" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 </head>
 
-<body>
-	<h1>A Game</h1>
+<body class="game">
+	<h1>Game UI</h1>
   
-  <div id="debug"></div>
+  <p>Log Debug:</p>
+  <div class="debug" id="debug"></div>
 
 <script>
 	var io = io.connect();
@@ -27,22 +30,22 @@
 	});
 
 	var play_to_right = function() {
-  	$('#debug').append('to_right ');
+  	$('#debug').append('<span class="fa fa-arrow-circle-right"></span> ');
   };
   io.on('play_to_right', play_to_right);
 
 	var play_to_left = function() {
-    $('#debug').append('to_left ');
+    $('#debug').append('<span class="fa fa-arrow-circle-left"></span> ');
   };
   io.on('play_to_left', play_to_left);
 
   var play_to_up = function() {
-  	$('#debug').append('to_up ');
+  	$('#debug').append('<span class="fa fa-arrow-circle-up"></span> ');
   };
   io.on('play_to_up', play_to_up);
 
   var play_to_down = function() {
-  	$('#debug').append('to_down ');
+  	$('#debug').append('<span class="fa fa-arrow-circle-down"></span> ');
   };
   io.on('play_to_down', play_to_down);  
 </script>

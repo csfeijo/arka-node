@@ -3,6 +3,19 @@ html, body{
 	padding: 0;
 	font-family: 'Trebuchet MS';
 }
+/* DEBUG */
+.debug {
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* GAME */
+.game {
+	padding: 10px;
+}
+
+/* CONTROLLER */
 .controller {
 
 }
