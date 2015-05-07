@@ -88,9 +88,10 @@
 
 			this.add(new Paddle());
 			Quick.play("pongSound");
-
-      this.add(new ScoreText());
-
+      
+      var scoreText = new Text('score 000000');
+      scoreText.setPosition(40, 10);
+      this.add(scoreText);
 
 		}; FirstScene.prototype = Object.create(Scene.prototype);
 
@@ -134,22 +135,6 @@
 		};
 
 		return Paddle;
-
-	})();
-
-	var ScoreText = (function(){
-
-			function ScoreText() {
-				var t = new Text('0');
-				
-				//this.text('0');
-
-				//this.addTag('ScoreText');
-
-				//this.setText('S');
-			}; ScoreText.prototype = Object.create(GameObject.prototype);
-      
-      return ScoreText;
 
 	})();
 
