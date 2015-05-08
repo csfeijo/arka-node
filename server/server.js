@@ -7,11 +7,11 @@ var express = require('express'),
 server.listen(port);
 
 app.use("/fonts", express.static(__dirname + '/fonts'));
-app.use("/styles", express.static(__dirname + '/styles'));
+app.use("/css", express.static(__dirname + '/css'));
 app.use("/scripts", express.static(__dirname + '/scripts'));
 
 app.get('/', function(req, res) {
-	console.log(0);
+  console.log(0);
   res.sendFile(__dirname + '/index.html');
 });
 
@@ -36,33 +36,33 @@ io.sockets.on('connection', function (socket) {
   console.log('Client connected!');
 
   // Game Connect
-	socket.on('game_connect', function(){
-	  console.log('Game Connected');
-	  socket.emit('game_connected');
-	});
+  socket.on('game_connect', function(){
+    console.log('Game Connected');
+    socket.emit('game_connected');
+  });
 
-	socket.on('to_right', function(){
-	  console.log('Controller to Right Pressed');
-	  
-	  io.sockets.emit('play_to_right');
-	});
+  socket.on('to_right', function(){
+    console.log('Controller to Right Pressed');
+    
+    io.sockets.emit('play_to_right');
+  });
 
-	socket.on('to_left', function(){
-	  console.log('Controller to Left Pressed');
-	  
-	  io.sockets.emit('play_to_left');
-	});
+  socket.on('to_left', function(){
+    console.log('Controller to Left Pressed');
+    
+    io.sockets.emit('play_to_left');
+  });
 
-	socket.on('to_up', function(){
-	  console.log('Controller to Up Pressed');
-	  
-	  io.sockets.emit('play_to_up');
-	});
+  socket.on('to_up', function(){
+    console.log('Controller to Up Pressed');
+    
+    io.sockets.emit('play_to_up');
+  });
 
   socket.on('to_down', function(){
-	  console.log('Controller to Down Pressed');
-	  
-	  io.sockets.emit('play_to_down');
-	});
+    console.log('Controller to Down Pressed');
+    
+    io.sockets.emit('play_to_down');
+  });
 
 });

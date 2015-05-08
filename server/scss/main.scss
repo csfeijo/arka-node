@@ -1,0 +1,187 @@
+@import 'definitions';
+
+
+html, body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial';
+}
+/* DEBUG */
+.debug {
+  border: 1px solid #ff0000;
+  border-radius: 4px;
+  padding: 4px;
+}
+
+/* GAME */
+.game {
+  padding: 10px;
+}
+
+/* CONTROLLER */
+.controller {
+  padding: 10px;
+  
+  header {
+    background: linear-gradient(135deg, #5a5d62 0%,#3b3a3f 100%);
+    border: 1px dotted $an-gray;    
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 10px 12px 10px 12px;
+    color: #fff;
+      
+    .logo {
+      font-size: 20px;
+      margin: 0 auto;
+    }
+    
+    .message {
+      font-family: 'Courier';
+      margin-left: 20px;
+    }
+  }
+  
+  .pad {
+    background: $an-light-gray;
+    border: 1px solid $an-gray;
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 30px auto 0 30px;
+    text-align: center;
+    //box-shadow: 6px 4px 8px #999;
+    float: left;
+    
+    .arrows {
+      width: 140px;
+      height: 140px;
+      margin: 20px auto 0 auto;
+    }
+    
+    button {
+      background: $an-high-gray;
+      color: #999;
+      outline: none;
+      padding: 9px;
+      width: 46px;
+      height: 46px;
+      font-size: 28px;
+      border: 0;
+      
+      &:active {
+        opacity: 0.8;
+      }
+      
+      &#up {
+      border-radius: 6px 6px 0 0;
+      }
+      &#down {
+        border-radius: 0 0 6px 6px;
+      }
+
+      &#left {
+        float: left;
+        border-radius: 6px 0 0 6px;
+      }
+      
+      &#center {
+        width: 48px;
+        height: 46px;
+        float: left;
+      }  
+      
+      &#right {
+        float: right;
+        border-radius: 0 6px 6px 0;
+      }
+    }
+  }
+  
+  .main-buttons {
+    //border: 1px solid #000;
+    width: 126px;
+    float: left;
+    margin: 160px 0 0 24px;
+    height: 60px;
+    
+    .btn-container {
+      width: 58px;
+      float: left;
+      text-align: center;
+
+      &:first-child {
+          margin-right: 10px;
+      }
+      
+      button {
+        width: 16px;
+        height: 60px;
+        border-radius: 10px;
+        outline: none;
+        background: $an-high-gray;
+        transform: rotate(50deg);
+        margin: 0 20px;
+      }
+      
+      label {
+        font-size: 12px;
+        display: block;
+        font-style: italic;
+        color: $an-high-gray;
+      }
+    }
+  }
+  
+  .action-buttons {
+    float: right;
+    background: $an-medium-gray;
+    border: 1px solid $an-gray;
+    border-radius: 50%;
+    width: 230px;
+    height: 230px;
+    
+    .btn-container {
+      background: $an-light-gray;
+      padding: 4px;
+      width: 130px;
+      height: 50px;
+      border-radius: 40px;
+      transform: rotate(-30deg);
+      margin: 10px auto 20px 72px;
+      
+      &:first-child{
+        margin: 51px auto 0px 18px;
+        
+        button {
+          background: $an-light-pink;
+        }
+      }
+      
+      button {
+        outline: none;
+        width: 50px;
+        height: 50px;
+        background: $an-medium-pink;
+        border-radius: 50%;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        float: right;
+          
+        &:first-child{
+          float: left;
+        }
+      }
+    }
+    
+  }
+  
+  
+
+  
+
+}
+
+.clear {
+  clear: both;
+}

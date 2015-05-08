@@ -2,51 +2,70 @@
 <html lang="en">
 
 <head>
-  <title>Smart Arkanoid</title>
+  <title>Arka-Node</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0" />
-  <link rel="stylesheet" href="styles/font-awesome.min.css">
-  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/main.css" />
   <script src="/scripts/jquery-1.11.2.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body class="controller">
-	<header>
-	  <span class="logo fa fa-gamepad"></span>
-	  <h1>Player 1</h1>
+  <header>
+    <span class="logo fa fa-spinner fa-spin"></span><span class="message">now loading ...</span>
   </header>
-	
+  
 
   <div class="pad">
-
-  	<button id="up"><span class="fa fa-arrow-circle-up"></span></button>
-
-  	<div class="clear"></div>
-
-  	<button id="right"><span class="fa fa-arrow-circle-right"></span></button>
-  	<button id="left"><span class="fa fa-arrow-circle-left"></span></button>
-
-  	<div class="clear"></div>
-
-  	<button id="down"><span class="fa fa-arrow-circle-down"></span></button>
-  </div>	
+    <div class="arrows">
+      <button id="up"><span class="fa fa-caret-up"></span></button>
+      <div class="clear"></div>
+      <button id="left"><span class="fa fa-caret-left"></span></button>
+      <button id="center"></button>
+      <button id="right"><span class="fa fa-caret-right"></span></button>
+      <div class="clear"></div>
+      <button id="down"><span class="fa fa-caret-down"></span></button>
+    </div>  
+  </div>
+  
+  <div class="main-buttons">
+    <div class="btn-container">
+      <button id="select"></button>
+      <label>SELECT</label>
+    </div>
+    <div class="btn-container">
+      <button id="start"></button>
+      <label>START</label>
+    </div>
+  </div>
+  
+  <div class="action-buttons">
+    <div class="btn-container">
+      <button>Y</button>
+      <button>X</button>
+    </div>
+    <div class="btn-container">
+      <button>B</button>
+      <button>A</button>
+    </div>
+  </div>
 
 
   <div id="debug"></div>
 
-	<script>
-	var io = io.connect();
-	var game_connected = function() {
-	  io.removeListener('game_connected', game_connected);
-	};
+  <script>
+  var io = io.connect();
+  var game_connected = function() {
+    io.removeListener('game_connected', game_connected);
+  };
   io.on('game_connected', game_connected);
 
 
-	io.on('connect', function() {
-	  
+  io.on('connect', function() {
+    
     io.emit('game_connect');
 
-	});
+  });
 
   $('#right').click(function(e){
     e.preventDefault();
@@ -67,7 +86,7 @@
     e.preventDefault();
     io.emit('to_down');
   });
-	</script>  
+  </script>  
 </body>
 
 </html>
