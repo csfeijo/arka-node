@@ -41,28 +41,29 @@ io.sockets.on('connection', function (socket) {
     socket.emit('game_connected');
   });
 
-  socket.on('to_right', function(){
-    console.log('Controller to Right Pressed');
+  // Controll Pad Map Keys
+  socket.on('controller_signal', function(data){
+    console.log('Controller Signal', data.signal);
     
-    io.sockets.emit('play_to_right');
-  });
-
-  socket.on('to_left', function(){
-    console.log('Controller to Left Pressed');
+    var signal = data.signal;
     
-    io.sockets.emit('play_to_left');
-  });
-
-  socket.on('to_up', function(){
-    console.log('Controller to Up Pressed');
-    
-    io.sockets.emit('play_to_up');
-  });
-
-  socket.on('to_down', function(){
-    console.log('Controller to Down Pressed');
-    
-    io.sockets.emit('play_to_down');
+    switch(signal){
+      case 'right':
+        io.sockets.emit('play_to_right');
+      break;
+      case 'left':
+        io.sockets.emit('play_to_left');
+      break;
+      case 'up':
+        io.sockets.emit('play_to_up');
+      break;
+      case 'down':
+        io.sockets.emit('play_to_down');
+      break;   
+      default:
+        console.log('Controller Signal not MAPPED!', data.signal);
+      break;
+    }
   });
 
 });

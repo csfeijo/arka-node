@@ -10,7 +10,8 @@
 </head>
 
 <body class="game">
-  <h1>Game Uuser Interface Console</h1>
+  <h1><span class="fa fa-desktop"></span></h1>
+  <h2>Game User Interface Console</h2>
   
   <p>Log Debug:</p>
   <div class="debug" id="debug"></div>
@@ -24,9 +25,7 @@
   io.on('game_connected', game_connected);
 
   io.on('connect', function() {
-    
     io.emit('game_connect');
-
   });
 
   var play_to_right = function() {
