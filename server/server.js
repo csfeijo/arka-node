@@ -9,6 +9,7 @@ server.listen(port);
 app.use("/fonts", express.static(__dirname + '/fonts'));
 app.use("/css", express.static(__dirname + '/css'));
 app.use("/scripts", express.static(__dirname + '/scripts'));
+app.use("/game-sample", express.static(__dirname + '/game-sample'));
 
 app.get('/', function(req, res) {
   console.log(0);
@@ -19,8 +20,12 @@ app.get('/controller', function(req, res) {
   res.sendFile(__dirname + '/controller.html');
 });
 
-app.get('/game', function(req, res) {
-  res.sendFile(__dirname + '/game.html');
+app.get('/game-debugger', function(req, res) {
+  res.sendFile(__dirname + '/game-debugger.html');
+});
+
+app.get('/game-sample', function(req, res) {
+  res.sendFile(__dirname + '/game-sample/index.html');
 });
 
 

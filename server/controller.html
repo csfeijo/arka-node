@@ -11,48 +11,49 @@
 </head>
 
 <body class="controller">
-  <header>
-    <span class="logo fa fa-spinner fa-spin"></span><span class="message">now loading ...</span>
-  </header>
-  
+  <div class="content">
+    <header>
+      <span class="logo fa fa-spinner fa-spin"></span><span class="message">now loading ...</span>
+    </header>
+    
 
-  <div class="pad">
-    <div class="arrows">
-      <button class="pad-button" id="up" data-action="up"><span class="fa fa-caret-up"></span></button>
-      <div class="clear"></div>
-      <button class="pad-button" id="left" data-action="left"><span class="fa fa-caret-left"></span></button>
-      <button id="center"></button>
-      <button class="pad-button" id="right" data-action="right"><span class="fa fa-caret-right"></span></button>
-      <div class="clear"></div>
-      <button class="pad-button" id="down" data-action="down"><span class="fa fa-caret-down"></span></button>
-    </div>  
+    <div class="pad">
+      <div class="arrows">
+        <button class="pad-button" id="up" data-action="up"><span class="fa fa-caret-up"></span></button>
+        <div class="clear"></div>
+        <button class="pad-button" id="left" data-action="left"><span class="fa fa-caret-left"></span></button>
+        <button id="center"></button>
+        <button class="pad-button" id="right" data-action="right"><span class="fa fa-caret-right"></span></button>
+        <div class="clear"></div>
+        <button class="pad-button" id="down" data-action="down"><span class="fa fa-caret-down"></span></button>
+      </div>  
+    </div>
+    
+    <div class="main-buttons">
+      <div class="btn-container">
+        <button class="pad-button" id="select" data-action="select"></button>
+        <label>SELECT</label>
+      </div>
+      <div class="btn-container">
+        <button class="pad-button" id="start" data-action="start"></button>
+        <label>START</label>
+      </div>
+    </div>
+    
+    <div class="action-buttons">
+      <div class="btn-container">
+        <button class="pad-button" data-action="Y">Y</button>
+        <button class="pad-button" data-action="X">X</button>
+      </div>
+      <div class="btn-container">
+        <button class="pad-button" data-action="B">B</button>
+        <button class="pad-button" data-action="A">A</button>
+      </div>
+    </div>
+
+
+    <div id="debug"></div>
   </div>
-  
-  <div class="main-buttons">
-    <div class="btn-container">
-      <button class="pad-button" id="select" data-action="select"></button>
-      <label>SELECT</label>
-    </div>
-    <div class="btn-container">
-      <button class="pad-button" id="start" data-action="start"></button>
-      <label>START</label>
-    </div>
-  </div>
-  
-  <div class="action-buttons">
-    <div class="btn-container">
-      <button class="pad-button" data-action="Y">Y</button>
-      <button class="pad-button" data-action="X">X</button>
-    </div>
-    <div class="btn-container">
-      <button class="pad-button" data-action="B">B</button>
-      <button class="pad-button" data-action="A">A</button>
-    </div>
-  </div>
-
-
-  <div id="debug"></div>
-
   <script>
   var io = io.connect();
   var game_connected = function() {

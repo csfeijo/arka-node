@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" type="text/css" href="css/context.css" />
+    <script src="js/quick-1.1.0.min.js"></script>
+    <script src="/scripts/jquery-1.11.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>    
+  </head>
+
+  <body>
+    <div align="center">
+      <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+
+    <div id="assets">
+      <img id="ballSprite" src="sprites/ball.png" width="32" height="32" />
+      <img id="paddleSprite" src="sprites/vaus.gif" width="128" height="32" />
+      
+      <img id="horizontalPipeSprite" src="sprites/horizontalPipe.png" width="16" height="24" />
+      <img id="verticalPipeSprite" src="sprites/verticalPipe.png" width="24" height="16" />
+
+      <img id="greenBrickSprite" src="sprites/greenBrick.png" width="16" height="8" />
+      <img id="purpleBrickSprite" src="sprites/purpleBrick.png" width="16" height="8" />
+      <img id="redBrickSprite" src="sprites/redBrick.png" width="16" height="8" />
+      <img id="silverBrickSprite" src="sprites/silverBrick.png" width="16" height="8" />
+      <img id="tealBrickSprite" src="sprites/tealBrick.png" width="16" height="8" />
+      <img id="yellowBrickSprite" src="sprites/yellowBrick.png" width="16" height="8" />
+
+      <img id=",Font" src="fonts/creepy/comma.png" width="4" height="8">
+      <img id="-Font" src="fonts/creepy/hyphen.png" width="6" height="8">
+      <img id=".Font" src="fonts/creepy/period.png" width="3" height="8">
+      <img id="'Font" src="fonts/creepy/apostrophe.png" width="3" height="8">
+      <img id="`Font" src="fonts/creepy/grave.png" width="3" height="8">
+      <img id="0Font" src="fonts/creepy/0.png" width="8" height="8">
+      <img id="1Font" src="fonts/creepy/1.png" width="8" height="8">
+      <img id="2Font" src="fonts/creepy/2.png" width="8" height="8">
+      <img id="3Font" src="fonts/creepy/3.png" width="8" height="8">
+      <img id="4Font" src="fonts/creepy/4.png" width="8" height="8">
+      <img id="5Font" src="fonts/creepy/5.png" width="8" height="8">
+      <img id="6Font" src="fonts/creepy/6.png" width="8" height="8">
+      <img id="7Font" src="fonts/creepy/7.png" width="8" height="8">
+      <img id="8Font" src="fonts/creepy/8.png" width="8" height="8">
+      <img id="9Font" src="fonts/creepy/9.png" width="8" height="8">
+      <img id="aFont" src="fonts/creepy/a.png" width="8" height="8">
+      <img id="bFont" src="fonts/creepy/b.png" width="8" height="8">
+      <img id="cFont" src="fonts/creepy/c.png" width="8" height="8">
+      <img id="dFont" src="fonts/creepy/d.png" width="8" height="8">
+      <img id="eFont" src="fonts/creepy/e.png" width="8" height="8">
+      <img id="fFont" src="fonts/creepy/f.png" width="8" height="8">
+      <img id="gFont" src="fonts/creepy/g.png" width="8" height="8">
+      <img id="hFont" src="fonts/creepy/h.png" width="8" height="8">
+      <img id="iFont" src="fonts/creepy/i.png" width="7" height="8">
+      <img id="jFont" src="fonts/creepy/j.png" width="8" height="8">
+      <img id="kFont" src="fonts/creepy/k.png" width="8" height="8">
+      <img id="lFont" src="fonts/creepy/l.png" width="8" height="8">
+      <img id="mFont" src="fonts/creepy/m.png" width="8" height="8">
+      <img id="nFont" src="fonts/creepy/n.png" width="8" height="8">
+      <img id="oFont" src="fonts/creepy/o.png" width="8" height="8">
+      <img id="pFont" src="fonts/creepy/p.png" width="8" height="8">
+      <img id="qFont" src="fonts/creepy/q.png" width="8" height="8">
+      <img id="rFont" src="fonts/creepy/r.png" width="8" height="8">
+      <img id="sFont" src="fonts/creepy/s.png" width="8" height="8">
+      <img id="tFont" src="fonts/creepy/t.png" width="7" height="8">
+      <img id="uFont" src="fonts/creepy/u.png" width="8" height="8">
+      <img id="vFont" src="fonts/creepy/v.png" width="8" height="8">
+      <img id="wFont" src="fonts/creepy/w.png" width="8" height="8">
+      <img id="xFont" src="fonts/creepy/x.png" width="8" height="8">
+      <img id="yFont" src="fonts/creepy/y.png" width="7" height="8">
+      <img id="zFont" src="fonts/creepy/z.png" width="8" height="8">
+      <audio id="pingSound" src="sounds/ping.ogg"></audio>
+      <audio id="pongSound" src="sounds/pong.ogg"></audio>
+      <audio id="diedSound" src="sounds/died.ogg"></audio>
+
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+
+#assets {
+	height: 1px;
+	overflow: hidden;
+	visibility: hidden;
+	width: 1px;
+}
+
+body {
+	background-color: Black;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+canvas {
+	cursor: none;
+}
